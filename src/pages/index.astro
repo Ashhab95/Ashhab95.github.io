@@ -2,11 +2,28 @@
 import Layout from '../layouts/Layout.astro'
 
 import { profile } from '@/settings'
-import { publications } from '@/data/cv'
-import ProfilePictures from '@/assets/profile_pictures.jpg'
+import { experiences, education } from '@/types/cv'
 import Hero from '@/components/ui/Hero.astro'
 import Grid from '@/components/ui/Grid.astro'
 import ArticleList from '@/components/ui/ArticleList.astro'
+import CvTimeline from '@/components/ui/CvTimeline.astro'
+import School from '@/components/icons/School.astro';
+import WorldMap from '@/components/icons/WorldMap.astro';
+
+import Python from '@/components/icons/python.astro';
+import Java from '@/components/icons/java.astro';
+import CSharp from '@/components/icons/csharp.astro';
+import Net from '@/components/icons/net.astro';
+import SQL from '@/components/icons/sql.astro';
+import Html from '@/components/icons/html.astro';
+import Css from '@/components/icons/css.astro';
+
+import JavaScript from '@/components/icons/js.astro';
+import Flask from '@/components/icons/flask.astro';
+import React from '@/components/icons/react.astro';
+import MongoDB from '@/components/icons/mongodb.astro';
+
+import GitHub from '@/components/icons/git.astro';
 
 const { fullName, title, institute, research_areas } = profile
 
@@ -14,24 +31,328 @@ const { fullName, title, institute, research_areas } = profile
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<!-- Hero Section -->
-	<section class='flex items-center gap-12 border-b pb-12'>
-		<Hero
-			fullName={fullName}
-			title={title}
-			institute={institute}
-			profilePicture={ProfilePictures}
-		/>
-	</section>
+<div class="bg-wrapper fade-section">
+  <Layout>
+    <!-- Hero Section -->
+    <section id="home" class="h-screen flex flex-col justify-center items-start text-left">
+      <Hero
+        fullName={fullName}
+      />
+    </section>
 
-	<!-- Research Areas -->
-	<section class='py-12 border-b'>
-		<Grid gridTitle='Research Areas' gridItems={research_areas} />
-	</section>
+    <!-- CV Section -->
+    <section id="cv" class="pl-0 pr-0 py-24 text-gray-900">
+      <div class="bg-white/30 rounded-xl shadow-md overflow-hidden p-8 max-w-7xl mx-auto">
+        <div class="w-full grid md:grid-cols-2 gap-16">
+          {/* ref: CV Section */}
+          <!-- Education -->
+          <div>
+            <h2 class="text-4xl font-bold mb-8 text-left">Kazi Ashhab Rahman</h2>
+            <div class="mb-6">
+              <div class="flex justify-between items-center mb-2">
+                <a href="https://coursecatalogue.mcgill.ca/en/undergraduate/science/programs/computer-science/computer-science-artificial-intelligence-major-bsc/#programoverviewtext" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
+                  <span>{education[0].degree}</span><span class="hover-arrow">→</span>
+                </a>
+                <div class="text-sm italic text-gray-700 text-right">{education[0].time}</div>
+              </div>
+              <div class="text-sm text-gray-700">
+                {education[0].conc}
+              </div>
+              <p class="text-sm text-gray-700">&nbsp;</p>
+              <div class="text-base text-gray-700 flex items-center gap-2">
+                <School class="w-4 h-4" />
+                <a href="https://www.mcgill.ca" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
+                  <span>{education[0].school}</span><span class="hover-arrow">→</span>
+                </a>
+              </div>
+              <div class="text-base text-gray-700 flex items-center gap-2">
+                <WorldMap class="w-4 h-4" /> {education[0].location}
+              </div>
+              <div class="mt-6">
+                <h3 class="text-xl font-bold text-gray-800 mb-2">Notable Courses Completed</h3>
+                <ul class="list-disc list-inside text-gray-700 text-base space-y-1">
+                  <li>
+                    <a href="https://coursecatalogue.mcgill.ca/courses/comp-302/index.html" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
+                      <span>COMP 302 Programming Paradigms</span><span class="hover-arrow">→</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://coursecatalogue.mcgill.ca/courses/comp-303/index.html" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
+                      <span>COMP 303 Software Design</span><span class="hover-arrow">→</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://coursecatalogue.mcgill.ca/courses/comp-350/index.html" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
+                      <span>COMP 350 Numerical Computing</span><span class="hover-arrow">→</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://www.mcgill.ca/study/2024-2025/courses/comp-345" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
+                      <span>COMP 345 Natural Language to Data Science</span><span class="hover-arrow">→</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://coursecatalogue.mcgill.ca/courses/comp-424/index.html" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
+                      <span>COMP 424 Artificial Intelligence</span><span class="hover-arrow">→</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://coursecatalogue.mcgill.ca/courses/comp-551/index.html" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
+                      <span>COMP 551 Applied Machine Learning</span><span class="hover-arrow">→</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://coursecatalogue.mcgill.ca/courses/math-222/index.html" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
+                      <span>MATH 222 Calculus 3</span><span class="hover-arrow">→</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://coursecatalogue.mcgill.ca/courses/math-223/index.html" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
+                      <span>MATH 223 Linear Algebra</span><span class="hover-arrow">→</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://coursecatalogue.mcgill.ca/courses/math-323/index.html" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
+                      <span>MATH 323 Probability</span><span class="hover-arrow">→</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://coursecatalogue.mcgill.ca/courses/math-324/index.html" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
+                      <span>MATH 324 Statistics</span><span class="hover-arrow">→</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://coursecatalogue.mcgill.ca/courses/math-558/index.html" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
+                      <span>MATH 558 Design of Experiments</span><span class="hover-arrow">→</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
-	<!-- Recent Publications -->
-	<section class='py-12 border-t'>
-		<ArticleList listTitle='Recent Publications' listItems={publications} />
-	</section>
-</Layout>
+          <!-- Experience -->
+          <div>
+            <h2 class="text-4xl font-bold mb-8 text-left">Experience</h2>
+
+            {experiences.map((exp) => (
+              <div class="mb-8">
+                <div class="flex items-baseline justify-between">
+                  <div class="text-lg font-bold mt-1">
+                    {exp.title}
+                    <span class="font-normal">
+                      @
+                      {exp.company === 'City Bank' ? (
+                        <a href="https://www.citybankplc.com/home" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
+                          <span>City Bank</span><span class="hover-arrow">→</span>
+                        </a>
+                      ) : exp.company === 'bKash' ? (
+                        <a href="https://www.bkash.com/" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
+                          <span>bKash</span><span class="hover-arrow">→</span>
+                        </a>
+                      ) : (
+                        exp.company
+                      )}
+                    </span>
+                  </div>
+                  <div class="text-sm italic text-gray-700">{exp.time}</div>
+                </div>
+                <div class="text-sm text-gray-700">{exp.location}</div>
+                <ul class="list-disc list-inside mt-2 space-y-1 text-gray-800">
+                  {exp.bullets.map(point => (
+                    <li>{point}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 text-gray-900">
+      <h2 class="text-4xl font-bold mb-12 text-center">Projects</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-8 max-w-7xl mx-auto">
+
+        <!-- Project 1: Track Split -->
+        <div class="bg-white/60 rounded-xl shadow-md overflow-hidden p-6 flex flex-col justify-between">
+          <img src="/tsplit.png" alt="Build in Progress" class="rounded mb-4 w-full max-h-64 object-cover" />
+          <div>
+            <h3 class="text-xl font-bold mb-2">Track Split – AI-Powered Expense Tracker</h3>
+            <p class="mb-4 text-sm text-gray-700">
+              A full-stack expense platform with dynamic visualizations and AI-powered spending insights. Features OCR-based bill scanning and intelligent group-splitting for streamlined shared expense management.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-auto">
+            <Python class="w-5 h-5 text-indigo-700" />
+            <JavaScript class="w-5 h-5 text-indigo-700" />
+            <Flask class="w-5 h-5 text-indigo-700" />
+            <React class="w-5 h-5 text-indigo-700" />
+            <MongoDB class="w-5 h-5 text-indigo-700" />
+          </div>
+        </div>
+
+        <!-- Project 2: Pokémon Game -->
+        <div class="bg-white/60 rounded-xl shadow-md overflow-hidden p-6 flex flex-col justify-between">
+          <img src="/pokemon.gif" alt="Pokémon Game Demo" class="rounded mb-4 w-full max-h-64 object-cover" />
+          <div>
+            <h3 class="text-xl font-bold mb-2">
+              <a href="https://github.com/Ashhab95/pengumon" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
+                <span>Pokémon Game Environment – Python</span><span class="hover-arrow">→</span>
+              </a>
+            </h3>
+            <p class="mb-4 text-sm text-gray-700">
+              A modular, object-oriented battle simulation featuring 45+ attack moves, 30+ item types, AI agents, and design patterns (Decorator, Observer, State, Visitor). Achieved a 95% win rate in simulations.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-auto">
+            <Python class="w-5 h-5 text-indigo-700" />
+            <a href="https://github.com/Ashhab95/pengumon" target="_blank" rel="noopener noreferrer" class="hover:text-white">
+              <GitHub class="w-8 h-8 md:w-8 md:h-8 min-w-[32px] min-h-[32px] text-indigo-700" />
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 3: Inventory System -->
+        <div class="bg-white/60 rounded-xl shadow-md overflow-hidden p-6 flex flex-col justify-between">
+          <img src="/inventory.gif" alt="Inventory System Demo" class="rounded mb-4 w-full max-h-64 object-cover" />
+          <div>
+            <h3 class="text-xl font-bold mb-2">
+              <a href="https://github.com/Ashhab95/Inventory_Management_System" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
+                <span>Inventory Management System – C#</span><span class="hover-arrow">→</span>
+              </a>
+            </h3>
+            <p class="mb-4 text-sm text-gray-700">
+              Built for a retail store to streamline stock control across 500+ SKUs. Integrated SQL Server backend with optimized queries, boosting data retrieval speed by 40%.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-auto">
+            <CSharp class="w-5 h-5 text-indigo-700" />
+            <Net class="w-5 h-5 text-indigo-700" />
+            <SQL class="w-5 h-5 text-indigo-700" />
+            <Html class="w-5 h-5 text-indigo-700" />
+            <Css class="w-5 h-5 text-indigo-700" />
+            <a href="https://github.com/Ashhab95/Inventory_Management_System" target="_blank" rel="noopener noreferrer" class="hover:text-white">
+              <GitHub class="w-8 h-8 md:w-8 md:h-8 min-w-[32px] min-h-[32px] text-indigo-700" />
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 4: Rate My Professor Analysis -->
+        <div class="bg-white/60 rounded-xl shadow-md overflow-hidden p-6 flex flex-col justify-between">
+          <img src="/rate-my-prof.png" alt="Rate My Professor" class="rounded mb-4" />
+          <div>
+            <h3 class="text-xl font-bold mb-2">
+              <a href="https://github.com/Ashhab95/RateMyProfessors-Data-Analysis" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
+                <span>Rate My Professor – Java Data Visualization Tool</span><span class="hover-arrow">→</span>
+              </a>
+            </h3>
+            <p class="mb-4 text-sm text-gray-700">
+              Developed a JavaFX-based application that analyzes professor reviews from large CSV datasets using a custom hash table. Features keyword filtering, rating breakdowns, and graphical insights.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-auto">
+            <Java class="w-5 h-5 text-indigo-700" />
+            <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm">JavaFX</span>
+            <a href="https://github.com/Ashhab95/RateMyProfessors-Data-Analysis" target="_blank" rel="noopener noreferrer" class="hover:text-white">
+              <GitHub class="w-8 h-8 md:w-8 md:h-8 min-w-[32px] min-h-[32px] text-indigo-700" />
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 5: Reversi Othello Game -->
+        <div class="bg-white/60 rounded-xl shadow-md overflow-hidden p-6 flex flex-col justify-between">
+          <img src="/reversi.gif" alt="Reversi Othello Demo" class="rounded mb-4 w-full max-h-64 object-cover" />
+          <div>
+            <h3 class="text-xl font-bold mb-2">
+              <a href="https://github.com/Ashhab95/Reversi-Othello" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
+                <span>Reversi Othello – AI Strategy Game</span><span class="hover-arrow">→</span>
+              </a>
+            </h3>
+            <p class="mb-4 text-sm text-gray-700">
+              Built a competitive AI agent using Minimax with Alpha-Beta Pruning and Iterative Deepening Search. Achieved 95% win rate through efficient heuristics and deep strategy modeling.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-auto">
+            <Python class="w-5 h-5 text-indigo-700" />
+            <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm">Minimax</span>
+            <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm">Alpha-Beta Pruning</span>
+            <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm">IDS</span>
+            <a href="https://github.com/Ashhab95/Reversi-Othello" target="_blank" rel="noopener noreferrer" class="hover:text-white">
+              <GitHub class="w-8 h-8 md:w-8 md:h-8 min-w-[32px] min-h-[32px] text-indigo-700" />
+            </a>
+          </div>
+        </div>
+
+       <!-- Project 6: Smash Game -->
+        <div class="bg-white/60 rounded-xl shadow-md overflow-hidden p-6 flex flex-col justify-between">
+          <img src="/smash.png" alt="Smash Game Demo" class="rounded mb-4 w-full max-h-64 object-cover" />
+          <div>
+            <h3 class="text-xl font-bold mb-2">
+              <a href="https://github.com/Ashhab95/Smash_Game" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
+                <span>Smash Game</span><span class="hover-arrow">→</span>
+              </a>
+            </h3>
+            <p class="mb-4 text-sm text-gray-700">
+            A game where players manipulate a recursively defined game board (quad-tree structure) by applying operations such as rotations, reflections, and smashing. The objective is to achieve a goal (either a "Blob Goal" or a "Perimeter Goal") while maximizing the score.The game board resembles a Mondrian painting and is randomly generated using colors from a predefined set.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-auto">
+            <Java class="w-5 h-5 text-indigo-700" />
+            <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm">JavaFX</span>
+            <a href="https://github.com/Ashhab95/Smash_Game" target="_blank" rel="noopener noreferrer" class="hover:text-white">
+              <GitHub class="w-8 h-8 md:w-8 md:h-8 min-w-[32px] min-h-[32px] text-indigo-700" />
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    
+  </Layout>
+</div>
+
+<style>
+  .bg-wrapper {
+    background-image: url('/bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: opacity 1s ease;
+  }
+
+  .fade-section {
+    position: relative;
+  }
+
+  .fade-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+    pointer-events: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .fade-section::after {
+      background: linear-gradient(to bottom, rgba(24,24,27,0) 0%, rgba(24,24,27,1) 100%);
+    }
+  }
+
+  .hover-arrow {
+    display: inline-block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    margin-left: 0.2em;
+    opacity: 0;
+    transform: translate(-4px, -4px);
+  }
+
+  a:hover .hover-arrow {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+</style>

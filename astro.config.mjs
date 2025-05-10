@@ -10,7 +10,12 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-    integrations: [react(), tailwind(), sitemap()],
-    site: template.website_url,
-    base: template.base,
+    // Old integrations:
+    // integrations: [react(), tailwind(), sitemap()],
+    // site: template.website_url,
+    // base: template.base,
+
+    integrations: [tailwind()],
+    site: 'https://Ashhab95.github.io',
+    output: 'static'
 });

@@ -4,26 +4,85 @@ import { Image } from 'astro:assets'
 import SocialIcons from './SocialIcons.astro'
 
 
-const {fullName, title, institute, profilePicture} = Astro.props
+const {fullName, title, institute} = Astro.props
 ---
-<div class='flex-1'>
-  <h1 class='text-4xl font-bold mb-4'>
-    Welcome! I'm <span class='text-secondary'>{fullName}</span>
-  </h1>
-  <p class='text-xl text-gray-600 mb-4'>{title}{institute ? ` at ${institute}` : ''}</p>
-  <p class='text-lg mb-6'>
-    Brief impactful description of your research focus and academic mission.
-    Highlight your key contributions and areas of expertise.
+<div class='flex-1 flex flex-col justify-center items-start text-left h-screen pl-0 pt-0 ml-0'>
+  <h1 class="text-9xl font-extrabold mb-4 leading-tight">Hey, I’m Kazi.</h1>
+  <p class='text-2xl text-gray-700 mb-6 italic'>
+    An aspiring innovator blending AI, software, and data into real-world solutions.
   </p>
+  <h2 class="text-6xl text-secondary font-mono">
+    I build <span id="rotating-text" class="text-secondary"></span><span class="blinking-cursor">|</span>
+  </h2>
   <div class='flex gap-4'>
     <SocialIcons />
   </div>
 </div>
-<div class='size-72 lg:block hidden'>
-  <!-- Add your profile image -->
-  <Image
-    src={profilePicture}
-    alt={fullName}
-    class='w-full h-full mask mask-circle size-44'
-  />
-</div>
+<script>
+  const phrases = [
+    "Software.",
+    "machine learning models.",
+    "the future."
+  ];
+
+  let i = 0;
+  let j = 0;
+  let currentPhrase = [];
+  let isDeleting = false;
+  let isEnd = false;
+  const textElement = document.getElementById("rotating-text");
+
+  function loop() {
+    isEnd = false;
+    textElement.textContent = currentPhrase.join("");
+
+    if (i < phrases.length) {
+      if (!isDeleting && j <= phrases[i].length) {
+        currentPhrase.push(phrases[i][j]);
+        j++;
+        textElement.textContent = currentPhrase.join("");
+      }
+
+      if (isDeleting && j <= phrases[i].length) {
+        currentPhrase.pop(phrases[i][j]);
+        j--;
+        textElement.textContent = currentPhrase.join("");
+      }
+
+      if (j === phrases[i].length) {
+        isEnd = true;
+        isDeleting = true;
+      }
+
+      if (isDeleting && j === 0) {
+        currentPhrase = [];
+        isDeleting = false;
+        i++;
+        if (i === phrases.length) {
+          i = 0;
+        }
+      }
+    }
+    const spedUp = Math.random() * (30 - 15) + 15;
+    const normalSpeed = Math.random() * (100 - 70) + 70;
+    const time = isEnd ? 2000 : isDeleting ? spedUp : normalSpeed;
+    setTimeout(loop, time);
+  }
+
+  loop();
+</script>
+<style>
+  .blinking-cursor {
+    display: inline-block;
+    margin-left: 2px;
+    width: 1ch;
+    animation: blink 1s step-start infinite;
+    color: #6b7280; /* Tailwind gray-500 */
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+</style>

@@ -11,11 +11,11 @@ const { elements, colored } = Astro.props
 ---
 
 <ul
-	class='timeline timeline-snap-icon max-md:timeline-compact timeline-vertical'
+	class='timeline timeline-snap-icon timeline-vertical timeline-left'
 >
 	{
 		elements.map((element, index) => (
-			<li>
+			<li class="md:contents">
 				<div class='timeline-middle'>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'
@@ -31,13 +31,18 @@ const { elements, colored } = Astro.props
 					</svg>
 				</div>
 				<div
-					class={`${index - (1 % 2) ? 'timeline-start' : 'timeline-end'} mb-10 md:text-end`}
+					class={`timeline-start mb-10 md:text-left`}
 				>
 					<time class='font-mono italic'>{element.time}</time>
 					<div class='text-lg font-black'>{isExperience(element) ? element.title : element.degree}</div>
 					<div>{element.description}</div>
 					<div>{isExperience(element) ? element.company : element.school}</div>
 					<div>{element.location}</div>
+          {isExperience(element) && element.bullets && (
+            <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
+              {element.bullets.map(bullet => <li>{bullet}</li>)}
+            </ul>
+          )}
 				</div>
         <hr class:list={[{ 'bg-accent': colored }]} />
 			</li>
