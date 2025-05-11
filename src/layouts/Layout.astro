@@ -1,5 +1,4 @@
 ---
-
 import { ClientRouter } from 'astro:transitions';
 
 import BetterIcon from '../components/ui/BetterIcon.astro'
@@ -27,18 +26,17 @@ const {
 		{template.transitions && <ClientRouter /> }
 
 		<Head title={title} description={description} />
-		<link rel="icon" href="/hokusai.png" />
 
 
 
 	</head>
-	<body class="scroll-smooth" style="background-image: url('/bg.jpeg'); background-size: cover; background-position: center;">
-		<div class={`drawer lg:drawer-open ${template.menu_left ? 'drawer-end' : ''}`}>
+	<body class="scroll-smooth">
+		<div class={`bg-base-100 drawer lg:drawer-open ${template.menu_left ? 'drawer-end' : ''}`}>
 			<input id='my-drawer' type='checkbox' class='drawer-toggle' />
 			<!-- Drawer content -->
-            <div class='drawer-content scroll-smooth'>
+            <div class='drawer-content bg-base-100 scroll-smooth'>
 				<Navbar />
-				<div>
+				<div class='bg-base-100 z-50 text-base-content shadow-sm'>
 					<nav class='navbar'>
 						<div class='navbar-start'>
 							{template.menu_left &&
