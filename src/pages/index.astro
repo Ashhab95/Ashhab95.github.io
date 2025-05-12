@@ -159,11 +159,9 @@ const { fullName, title, institute, research_areas } = profile
                 </div>
                 <div class="text-sm text-gray-700">{exp.location}</div>
                 <ul class="list-disc list-inside mt-2 space-y-1 text-gray-800">
-                  {exp.bullets.map(point =>
-                    point === "Designed and executed over 100 automated unit and integration tests using JUnit and Mockito, improving code coverage from 60% to 92%."
-                      ? <li>Designed and executed over 100 automated unit and integration tests using JUnit, improving code coverage from 60% to 92%.</li>
-                      : <li>{point}</li>
-                  )}
+                  {exp.bullets.map(point => (
+                    <li>{point}</li>
+                  ))}
                 </ul>
               </div>
             ))}
@@ -317,7 +315,7 @@ const { fullName, title, institute, research_areas } = profile
 
 <style>
   .bg-wrapper {
-    background-image: url('/images/bg2.jpg');
+    background-image: url('/bg.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;

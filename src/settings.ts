@@ -33,7 +33,7 @@ export const template = {
 }
 
 export const seo = {
-	default_title: 'Kazi Ashhab Rahman',
-	default_description: 'Kazi Portfolio',
-	default_image: '/hokusai.png',
+	default_title: 'Astro Academia',
+	default_description: 'Astro Academia is a template for academic websites.',
+	default_image: '/images/astro-academia.png',
 }
