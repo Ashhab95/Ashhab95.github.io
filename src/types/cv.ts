@@ -45,7 +45,7 @@ export const experiences: Experience[] = [
     bullets: [
       "Developed and deployed RESTful APIs in Java (Spring Boot) and PostgreSQL, optimizing backend communication for the bKash Mobile Banking platform, resulting in 30% faster transaction processing.",
       "Enhanced CI/CD workflows using Git, Jenkins, and Docker, reducing integration-related errors by 20% and deployment time by 35%.",
-      "Designed and executed over 100 automated unit and integration tests using JUnit and Mockito, improving code coverage from 60% to 92%.",
+      "Designed and executed over 100 automated unit and integration tests using JUnit, improving code coverage from 60% to 92%.",
       "Spearheaded a debugging initiative that resolved 15+ critical runtime bugs, enhancing application stability and reducing crash reports by 50%.",
       "Participated in Agile sprints, collaborating with product managers and QA engineers to ensure timely delivery of features in alignment with user requirements."
     ]
