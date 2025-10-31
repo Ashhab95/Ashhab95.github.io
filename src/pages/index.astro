@@ -27,9 +27,6 @@ import GitHub from '@/components/icons/git.astro';
 
 const { fullName, title, institute, research_areas } = profile
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
----
 
 <div class="bg-wrapper fade-section">
   <Layout>
@@ -155,7 +152,7 @@ const { fullName, title, institute, research_areas } = profile
           <div>
             <h2 class="text-4xl font-bold mb-8 text-left">Experience</h2>
 
-            {experiences.map((exp) => (
+            {[...experiences].sort((a, b) => (a.company === 'Royal Bank of Canada (RBC)' ? -1 : b.company === 'Royal Bank of Canada (RBC)' ? 1 : 0)).map((exp) => (
               <div class="mb-8">
                 <div class="flex items-baseline justify-between">
                   <div class="text-lg font-bold mt-1">
@@ -169,6 +166,10 @@ const { fullName, title, institute, research_areas } = profile
                       ) : exp.company === 'bKash' ? (
                         <a href="https://www.bkash.com/" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
                           <span>bKash</span><span class="hover-arrow">→</span>
+                        </a>
+                      ) : exp.company === 'Royal Bank of Canada (RBC)' ? (
+                        <a href="https://www.rbc.com" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
+                          <span>Royal Bank of Canada (RBC)</span><span class="hover-arrow">→</span>
                         </a>
                       ) : (
                         exp.company
