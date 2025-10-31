@@ -25,7 +25,9 @@ import MongoDB from '@/components/icons/mongodb.astro';
 
 import GitHub from '@/components/icons/git.astro';
 
+
 const { fullName, title, institute, research_areas } = profile
+---
 
 
 <div class="bg-wrapper fade-section">
@@ -152,39 +154,77 @@ const { fullName, title, institute, research_areas } = profile
           <div>
             <h2 class="text-4xl font-bold mb-8 text-left">Experience</h2>
 
-            {[...experiences].sort((a, b) => (a.company === 'Royal Bank of Canada (RBC)' ? -1 : b.company === 'Royal Bank of Canada (RBC)' ? 1 : 0)).map((exp) => (
-              <div class="mb-8">
-                <div class="flex items-baseline justify-between">
-                  <div class="text-lg font-bold mt-1">
-                    {exp.title}
-                    <span class="font-normal">
-                      @
-                      {exp.company === 'City Bank' ? (
+            {[...experiences].map((exp) => (
+              exp.company === 'RBC' ? (
+                <div class="mb-8">
+                  <div class="flex items-baseline justify-between">
+                    <div class="text-lg font-bold mt-1">
+                      {exp.title}
+                      <span class="font-normal">
+                        @
+                        <a href="https://www.rbc.com" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
+                          <span>RBC</span><span class="hover-arrow">→</span>
+                        </a>
+                      </span>
+                    </div>
+                    <div class="text-sm italic text-gray-700">{exp.time}</div>
+                  </div>
+                  <div class="text-sm text-gray-700">{exp.location}</div>
+                  <ul class="list-disc list-inside mt-2 space-y-1 text-gray-800">
+                    {exp.bullets.map(point => (
+                      <li>{point}</li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null
+            ))}
+            {[...experiences].map((exp) => (
+              exp.company === 'City Bank' ? (
+                <div class="mb-8">
+                  <div class="flex items-baseline justify-between">
+                    <div class="text-lg font-bold mt-1">
+                      {exp.title}
+                      <span class="font-normal">
+                        @
                         <a href="https://www.citybankplc.com/home" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
                           <span>City Bank</span><span class="hover-arrow">→</span>
                         </a>
-                      ) : exp.company === 'bKash' ? (
+                      </span>
+                    </div>
+                    <div class="text-sm italic text-gray-700">{exp.time}</div>
+                  </div>
+                  <div class="text-sm text-gray-700">{exp.location}</div>
+                  <ul class="list-disc list-inside mt-2 space-y-1 text-gray-800">
+                    {exp.bullets.map(point => (
+                      <li>{point}</li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null
+            ))}
+            {[...experiences].map((exp) => (
+              exp.company === 'bKash' ? (
+                <div class="mb-8">
+                  <div class="flex items-baseline justify-between">
+                    <div class="text-lg font-bold mt-1">
+                      {exp.title}
+                      <span class="font-normal">
+                        @
                         <a href="https://www.bkash.com/" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
                           <span>bKash</span><span class="hover-arrow">→</span>
                         </a>
-                      ) : exp.company === 'Royal Bank of Canada (RBC)' ? (
-                        <a href="https://www.rbc.com" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
-                          <span>Royal Bank of Canada (RBC)</span><span class="hover-arrow">→</span>
-                        </a>
-                      ) : (
-                        exp.company
-                      )}
-                    </span>
+                      </span>
+                    </div>
+                    <div class="text-sm italic text-gray-700">{exp.time}</div>
                   </div>
-                  <div class="text-sm italic text-gray-700">{exp.time}</div>
+                  <div class="text-sm text-gray-700">{exp.location}</div>
+                  <ul class="list-disc list-inside mt-2 space-y-1 text-gray-800">
+                    {exp.bullets.map(point => (
+                      <li>{point}</li>
+                    ))}
+                  </ul>
                 </div>
-                <div class="text-sm text-gray-700">{exp.location}</div>
-                <ul class="list-disc list-inside mt-2 space-y-1 text-gray-800">
-                  {exp.bullets.map(point => (
-                    <li>{point}</li>
-                  ))}
-                </ul>
-              </div>
+              ) : null
             ))}
           </div>
         </div>
@@ -230,6 +270,53 @@ const { fullName, title, institute, research_areas } = profile
           <div class="flex flex-wrap gap-2 mt-auto">
             <Python class="w-5 h-5 text-indigo-700" />
             <a href="https://github.com/Ashhab95/pengumon" target="_blank" rel="noopener noreferrer" class="hover:text-white">
+              <GitHub class="w-8 h-8 md:w-8 md:h-8 min-w-[32px] min-h-[32px] text-indigo-700" />
+            </a>
+          </div>
+        </div>
+
+        <!-- Project: Distributed Travel Reservation System -->
+        <div class="bg-white/60 rounded-xl shadow-md overflow-hidden p-6 flex flex-col justify-between">
+          <img src="/travel.png" alt="Distributed Travel Reservation System" class="rounded mb-4 w-full max-h-64 object-cover" />
+          <div>
+            <h3 class="text-xl font-bold mb-2">
+              <a href="https://github.com/Ashhab95/COMP-512/tree/main/Assignment%201" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
+                <span>Distributed Travel Reservation System – Java (RMI, TCP)</span><span class="hover-arrow">→</span>
+              </a>
+            </h3>
+            <p class="mb-4 text-sm text-gray-700">
+              Distributed reservation platform with a coordinating middleware and four resource managers (Flights, Cars, Rooms). RMI/TCP implementations with a custom JSON protocol, auto‑reconnect, and a thread‑per‑connection model (10+ clients, &lt;1s), plus atomic bundle reservations with rollback/2PC.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-auto">
+            <Java class="w-5 h-5 text-indigo-700" />
+            <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm">RMI</span>
+            <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm">TCP</span>
+            <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm">JSON</span>
+            <a href="https://github.com/Ashhab95/COMP-512/tree/main/Assignment%201" target="_blank" rel="noopener noreferrer" class="hover:text-white">
+              <GitHub class="w-8 h-8 md:w-8 md:h-8 min-w-[32px] min-h-[32px] text-indigo-700" />
+            </a>
+          </div>
+        </div>
+
+        <!-- Project: Treasure Island Paxos (Total Order) -->
+        <div class="bg-white/60 rounded-xl shadow-md overflow-hidden p-6 flex flex-col justify-between">
+          <img src="/paxos.png" alt="Paxos Total Order Multiplayer Game" class="rounded mb-4 w-full max-h-64 object-cover" />
+          <div>
+            <h3 class="text-xl font-bold mb-2">
+              <a href="https://github.com/Ashhab95/COMP-512/tree/main/Assignment2" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
+                <span>Treasure Island – Java</span><span class="hover-arrow">→</span>
+              </a>
+            </h3>
+            <p class="mb-4 text-sm text-gray-700">
+              Implemented a Paxos-based total order broadcast for a multiplayer game using a group communication layer. Supports leader election, quorum commits, failure injection points, and buffered delivery for consistent state across nodes.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-auto">
+            <Java class="w-5 h-5 text-indigo-700" />
+            <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm">Paxos</span>
+            <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm">GCL</span>
+            <a href="https://github.com/Ashhab95/COMP-512/tree/main/Assignment2" target="_blank" rel="noopener noreferrer" class="hover:text-white">
               <GitHub class="w-8 h-8 md:w-8 md:h-8 min-w-[32px] min-h-[32px] text-indigo-700" />
             </a>
           </div>
@@ -288,7 +375,7 @@ const { fullName, title, institute, research_areas } = profile
           <div>
             <h3 class="text-xl font-bold mb-2">
               <a href="https://github.com/Ashhab95/Reversi-Othello" target="_blank" rel="noopener noreferrer" class="transition-transform duration-300 hover:text-purple-700 hover:font-bold transform hover:scale-110">
-                <span>Reversi Othello – AI Strategy Game</span><span class="hover-arrow">→</span>
+                <span>Reversi Othello – Strategy Game</span><span class="hover-arrow">→</span>
               </a>
             </h3>
             <p class="mb-4 text-sm text-gray-700">

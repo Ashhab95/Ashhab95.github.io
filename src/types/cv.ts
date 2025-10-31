@@ -23,6 +23,20 @@ export const education: Education[] = [
 
 export const experiences: Experience[] = [
   {
+    company: "RBC",
+    time: "Jan 2026 – April 2026",
+    title: "Incoming Software Co-Op Developer",
+    location: "Montreal, Canada",
+    summary: "Incoming Developer Co‑op on the Digital Technology team (Online Banking); selected to join an agile squad working on full‑stack services and cloud‑native delivery.",
+    bullets: [
+      "Will design and deliver full‑stack features for RBC’s Online Banking platform using Java, Spring Boot, Angular, and JavaScript within OpenShift and Azure environments.",
+      "Will build and optimize RESTful APIs and MongoDB integrations to improve scalability, maintainability, and performance across services.",
+      "Will implement automated unit and integration testing, participate in code reviews, and contribute to CI/CD pipelines to enhance release reliability and speed.",
+      "Will collaborate within an agile squad to translate business requirements into technical designs, document components and interfaces, and drive cross‑team walkthroughs.",
+      "Will support platform modernization and performance tuning initiatives, including observability and developer experience improvements."
+    ]
+  },
+  {
     company: "City Bank",
     time: "May 2024 – August 2024",
     title: "Summer Data Science Intern",
