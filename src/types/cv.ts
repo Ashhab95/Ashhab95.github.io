@@ -25,9 +25,9 @@ export const experiences: Experience[] = [
   {
     company: "RBC",
     time: "Jan 2026 – April 2026",
-    title: "Incoming Software Co-Op Developer",
+    title: "Incoming Software Developer Intern",
     location: "Montreal, Canada",
-    summary: "Incoming Developer Co‑op on the Digital Technology team (Online Banking); selected to join an agile squad working on full‑stack services and cloud‑native delivery.",
+    summary: "Incoming Software Developer Intern on the Digital Technology team (Online Banking); selected to join an agile squad working on full‑stack services and cloud‑native delivery.",
     bullets: [
       "Will design and deliver full‑stack features for RBC’s Online Banking platform using Java, Spring Boot, Angular, and JavaScript within OpenShift and Azure environments.",
       "Will build and optimize RESTful APIs and MongoDB integrations to improve scalability, maintainability, and performance across services.",
